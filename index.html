@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Surprise ❤️</title>
+
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #ffb6d9, #ffd6e7, #e7c6ff);
+    color: #8b174d;
+  }
+
+  .card {
+    width: 88%;
+    max-width: 390px;
+    padding: 30px 20px;
+    background: rgba(255,255,255,0.82);
+    border-radius: 28px;
+    box-shadow: 0 10px 35px #b34c8060;
+    position: relative;
+    z-index: 2;
+  }
+
+  h1 { font-size: 29px; }
+  p { line-height: 1.7; }
+
+  .big-heart {
+    font-size: 75px;
+    animation: beat 1s infinite;
+  }
+
+  button {
+    border: none;
+    padding: 14px 24px;
+    border-radius: 30px;
+    background: #ff3f91;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 12px;
+  }
+
+  button:active { transform: scale(.95); }
+
+  #message {
+    display: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+
+  .heart {
+    position: absolute;
+    bottom: -40px;
+    animation: floatUp 7s linear infinite;
+    opacity: .8;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  @keyframes beat {
+    50% { transform: scale(1.2); }
+  }
+
+  @keyframes floatUp {
+    to {
+      transform: translateY(-115vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="big-heart">💗</div>
+    <h1>Hey, You! 🥰</h1>
+    <p>I made a little surprise just for you...</p>
+    <p>Ready to open it? ✨</p>
+
+    <button onclick="showSurprise()">Open Your Surprise 💌</button>
+
+    <div id="message">
+      You make the world a little brighter! 💖<br>
+      Never forget how special you are. 🌷
+    </div>
+  </div>
+
+<script>
+  function showSurprise() {
+    document.getElementById("message").style.display = "block";
+    document.querySelector("button").textContent = "Surprise Opened! 💕";
+
+    for (let i = 0; i < 25; i++) {
+      const heart = document.createElement("div");
+      heart.textContent = ["❤️", "💗", "💖", "💕", "✨"][
+        Math.floor(Math.random() * 5)
+      ];
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (18 + Math.random() * 25) + "px";
+      heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 7500);
+    }
+  }
+
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.textContent = "💗";
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = "7s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 7000);
+  }, 700);
+</script>
+</body>
+</html>
